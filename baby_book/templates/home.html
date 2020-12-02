@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>BabyBook</title>
+    <link rel="stylesheet" href="/static/home/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="/static/home/fonts/ionicons.min.css">
+   <link rel="stylesheet" href="/static/home/fonts/pikaday.min.css">
+</head>
+
+<body>
+    {% include "nav.html" %}
+    <main class="page lanidng-page">
+        <section class="portfolio-block block-intro">
+            <div class="container">
+                <div class="avatar" style="background-image:url('{{ STATIC_URL }}/static/home/img/logo.jpg');"></div>
+                <div class="about-me">
+                    <p>A place where you can save and share your precious baby memories</p><a class="btn btn-outline-primary" role="button" href="#">Sneak Peak</a></div>
+            </div>
+        </section>
+        <section class="portfolio-block photography">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="/static/home/img/home_image1.jpg" alt=""></a></div>
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="/static/home/img/home_image2.jpg" alt=""></a></div>
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="/static/home/img/home_image3.jpg" alt=""></a></div>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio-block call-to-action border-bottom">
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center content"><button class="btn btn-outline-primary btn-lg" type="button">Create a Story</button></div>
+            </div>
+        </section>
+        <section class="portfolio-block skills">
+            <div class="container">
+                <div class="heading">
+                    <h2><strong>don't miss a thing</strong></h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
+                            <div class="card-body">
+                                <h3 class="card-title">Stories</h3>
+                                <p class="card-text">BabyBook makes it easy to keep track of all the fun stories and memories you share in your baby's first year, plus you can share it with the fam!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i></div>
+                            <div class="card-body">
+                                <h3 class="card-title"><strong>Celebrate the Milestones</strong></h3>
+                                <p class="card-text">Are you sentimental and want to remember your child’s early years? Do you want to preserve these precious memories for when they’re older? You’re on the right place!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline"></i></div>
+                            <div class="card-body">
+                                <h3 class="card-title">Share</h3>
+                                <p class="card-text">Share with your little one what the world was like when they were born. All those precious moments are backed up and kept private for you to share with those you choose.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="portfolio-block website gradient">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-lg-5 offset-lg-1 text">
+                    <h3><strong>Privacy Policy</strong></h3>
+                    <p>BabyBook is committed to your privacy. Our customer Privacy Policy is a clear explanation of how we collect, use, disclose, transfer, and store your information. Learn how to review any information that may be associated with you.</p>
+                </div>
+                <div class="col-md-12 col-lg-5">
+                    <div class="portfolio-laptop-mockup">
+                        <div class="screen">
+                            <div class="screen-content" style="background-image:url('{{ STATIC_URL }}/static/home/img/privacy_policy.png');"></div>
+                        </div>
+                        <div class="keyboard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include "footer.html" %}
+    <script src="/static/home/js/jquery.min.js"></script>
+    <script src="/static/home/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/home/js/pikaday.min.js"></script>
+    <script src="/static/home/js/theme.js"></script>
+</body>
+
+</html>

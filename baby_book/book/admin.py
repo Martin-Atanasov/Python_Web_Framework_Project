@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+#from templates_advanced.models import
+
+#admin.site.register()
