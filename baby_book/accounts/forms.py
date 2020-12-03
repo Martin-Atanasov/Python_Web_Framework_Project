@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
+from accounts.models import UserProfile
+
 
 class CreateAccountForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -40,3 +42,5 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = '__all__'
+
+
