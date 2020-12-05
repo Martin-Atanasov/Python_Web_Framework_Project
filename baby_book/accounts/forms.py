@@ -44,3 +44,31 @@ class LoginForm(AuthenticationForm):
         fields = '__all__'
 
 
+class ProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+
+    class Meta:
+        model = UserProfile
+        fields = ('profile_picture',)
+
+
+class UserForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            self.fields[field_name].help_text = None
+
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(max_length=254, required=True)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+

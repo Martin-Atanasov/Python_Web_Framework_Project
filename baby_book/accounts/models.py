@@ -6,7 +6,7 @@ class UserProfile(models.Model):
     profile_picture = models.ImageField(
         upload_to='users',
         default='users/profile_pic_default.png',
-        blank=True
+        blank=False
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
