@@ -50,7 +50,6 @@ class ProfileForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
-
     class Meta:
         model = UserProfile
         fields = ('profile_picture',)

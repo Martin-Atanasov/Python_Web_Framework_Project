@@ -14,18 +14,27 @@
 <body>
 {% include "nav.html" %}
 <main class="page contact-page">
+    <section class="portfolio-block contact">
+        <div class="container">
+            <div class="heading">
+                <h2>Add Kid</h2>
+            </div>
 
-<div class="text-center" style="width: 80%; margin: 0 auto">
-  <h1>Password reset complete</h1>
-  <h6 style="width: 60%; margin: 0 auto">
-    Your Password has been set. You may go ahead and login
-  </h6>
-</div>
-<br />
-<div class="text-center">
-  <a href="{% url 'login' %}">Login</a>
-</div>
+            <form method="POST" action="" enctype="multipart/form-data">
+                <ul style="list-style: none;">
+                    {% csrf_token %}
+                    {{ form.as_ul }}
+                    <br>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block btn-lg" type="submit">Add Kid</button>
+                    </div>
 
+                </ul>
+            </form>
+
+        </div>
+        </div>
+    </section>
 </main>
 {% include "footer.html" %}
 <script src="/static/home/js/jquery.min.js"></script>

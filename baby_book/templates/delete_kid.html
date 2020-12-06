@@ -13,32 +13,33 @@
 
 <body>
 {% include "nav.html" %}
-<main class="page contact-page">
-    <section class="portfolio-block contact">
-        <div class="container">
-            <div class="heading">
-                <h2>Create Account to continue</h2>
-            </div>
 
-            <form method="post">
+<main class="page lanidng-page">
+    <br>
+    <section class="portfolio-block photography">
+        <div class="heading">
+            <h2>Delete {{ kids.first_name }} {{ kids.last_name }}</h2>
+        </div>
+        <br>
+        <div class="col text-center">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <ul style="list-style: none;">
                     {% csrf_token %}
-                    {{ form.as_ul }}
+                    {{ form }}
+
                     <br>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block btn-lg" type="submit">Create Account</button>
-                    </div>
+                    <button class="btn btn-primary">Delete</button>
+                    <br>
+                    <br>
                     <div class="col text-center">
-                        <a class="btn btn-outline-primary" role="button" href="{% url 'login' %}">Sign in
-                            instead
+                        <a class="btn btn-outline-primary" role="button" href="{% url 'my_kids' %}">Cancel
                         </a>
                     </div>
                 </ul>
             </form>
-
-        </div>
         </div>
     </section>
+    <br>
 </main>
 {% include "footer.html" %}
 <script src="/static/home/js/jquery.min.js"></script>

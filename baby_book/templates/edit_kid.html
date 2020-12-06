@@ -17,13 +17,11 @@
 <main class="page lanidng-page">
     <br>
     <section class="portfolio-block photography">
-        <div class="heading">
-            <h2>Profile of {{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
-        </div>
+
 
         <section class="portfolio-block block-intro">
             <span class="img-container">
-      <img src="/media/{{ profile.profile_picture }}" alt="" style="object-fit: cover; height: 250px;">
+      <img src="/media/{{ kid.baby_profile_picture }}" alt="" style="object-fit: cover; height: 250px;">
                 <br>
     </span>
             <br>
@@ -31,17 +29,16 @@
                 <form method="POST" action="" enctype="multipart/form-data">
                     <ul style="list-style: none;">
                         {% csrf_token %}
-                        {{ user_form }}
+                        {{ form }}
+
                         <br>
-                        {{ profile_form }}
-                        <br>
-                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary">Edit</button>
                         <br>
                         <br>
                         <div class="col text-center">
-                        <a class="btn btn-outline-primary" role="button" href="{% url 'reset_password' %}">Password Reset
-                        </a>
-                    </div>
+                            <a class="btn btn-outline-primary" role="button" href="{% url 'delete_kid' pk=kid.id %}">Delete Kid
+                            </a>
+                        </div>
                     </ul>
                 </form>
             </div>
