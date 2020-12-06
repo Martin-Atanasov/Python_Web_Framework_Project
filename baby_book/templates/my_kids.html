@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8">
+
+
     <title>BabyBook</title>
     <link rel="stylesheet" href="/static/home/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/home/fonts/ionicons.min.css">
@@ -13,41 +16,43 @@
 <body>
 {% include "nav.html" %}
 <main class="page contact-page">
-
-
-    <section class="portfolio-block block-intro">
+    <section class="text-center">
         <div class="container">
-
-            <div class="about-me">
-                <p>{% for kids in my_kids %}
-
-                    <img src="/media/{{ kids.baby_profile_picture }}" alt="..."
-                         style="object-fit: cover; height: 250px;">
-                    <div class="container">
-                    <h3>{{ kids.first_name }}</h3>
-                    <h3>{{ kids.last_name }}</h3>
-                    <h3>{{ kids.date_of_birth }}</h3>
-                    <h3>{{ kids.additional_info }}</h3>
-                    <div class="expense-detail">
-                    </div>
-                        <div class="right">
-                            <button class="edit"><a href="{% url 'edit_kid' pk=kids.id %}">Edit</a></button>
-                            <button class="delete"><a href="{% url 'delete_kid' pk=kids.id %}">Delete</a></button>
-                        </div>
-                    </div>
-
-                    </div>
-
-                {% endfor %}
-            <hr>
-
             </p><a
                 class="btn btn-outline-primary" role="button" href="{% url 'create_kid' %}">Add Kid</a></div>
         </div>
     </section>
+    <section class="portfolio-block projects-cards">
+        <div class="container">
+            <div class="heading">
+                <h2>My Kids</h2>
+            </div>
+            <div class="row">
+                {% for kids in my_kids %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover"
+                                                                    src="/media/{{ kids.baby_profile_picture }}"
+                                                                    alt="Card Image" style="object-fit: cover; height: 250px;"> </a>
+                            <div class="card-body">
+                                <h6><a href="#">{{ kids.first_name }} {{ kids.last_name }}</a></h6>
+                                <p class="text-muted card-text">{{ kids.date_of_birth }}</p>
+                                <p class="text-muted card-text">{{ kids.additional_info }}</p>
+                                <div class="right">
+                                    <button class="edit"><a href="{% url 'edit_kid' pk=kids.id %}">Edit</a></button>
+                                    <button class="delete"><a href="{% url 'delete_kid' pk=kids.id %}">Delete</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
 
+    </section>
 
 </main>
+
 {% include "footer.html" %}
 <script src="/static/home/js/jquery.min.js"></script>
 <script src="/static/home/bootstrap/js/bootstrap.min.js"></script>

@@ -18,11 +18,22 @@ class Kids(models.Model):
 
 
 class Memory(models.Model):
+    CHOICES = (
+        ('PRIVATE', 'Private'),
+        ('SHARED', 'Shared'),
+        ('PUBLIC', 'Public'),
+    )
+
     kid = models.ForeignKey(Kids, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=30, blank=False)
     date_of_memory = models.DateField(blank=False)
+    status = models.CharField(max_length=30, choices=CHOICES, blank=False)
     description = models.TextField(blank=True)
     memory_picture = models.ImageField(
         upload_to='memories',
         blank=False
     )
+
+    def __str__(self):
+        return self.title + ' from ' + str(self.date_of_memory)

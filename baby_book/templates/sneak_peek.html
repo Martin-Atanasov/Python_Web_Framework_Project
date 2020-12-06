@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8">
+
+
+    <title>BabyBook</title>
+    <link rel="stylesheet" href="/static/home/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/home/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/static/home/fonts/pikaday.min.css">
+</head>
+
+<body>
+{% include "nav.html" %}
+<main class="page contact-page">
+    <section class="text-center">
+
+    </section>
+    <section class="portfolio-block projects-cards">
+        <div class="container">
+            <div class="heading">
+                <h2>Sneak Peek</h2>
+            </div>
+            <div class="row">
+                {% for memory in my_stories %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover"
+                                                                    src="/media/{{ memory.memory_picture }}"
+                                                                    alt="Card Image"
+                                                                    style="object-fit: cover; height: 250px;"> </a>
+                            <div class="card-body">
+                                <h6><a href="#">{{ memory.title }}</a></h6>
+                                <h6><a href="#">{{ memory.kid.first_name }} {{ memory.kid.last_name }}</a></h6>
+                                <h6><a href="#">{{ memory.user.first_name }} {{ memory.user.last_name }} is the parent</a></h6>
+                                <p class="text-muted card-text">{{ memory.date_of_memory }}</p>
+                                <p class="text-muted card-text">{{ memory.description }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+{% include "footer.html" %}
+<script src="/static/home/js/jquery.min.js"></script>
+<script src="/static/home/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/home/js/pikaday.min.js"></script>
+<script src="/static/home/js/theme.js"></script>
+</body>
+
+</html>

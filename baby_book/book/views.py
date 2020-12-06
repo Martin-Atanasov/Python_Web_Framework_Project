@@ -1,6 +1,7 @@
 import os
 
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -12,7 +13,7 @@ from accounts.models import UserProfile
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from book.forms import EditKid, DeleteKid, AddKid
-from book.models import Kids
+from book.models import Kids, Memory
 
 
 class HomeView(View):
@@ -34,7 +35,7 @@ class MyKids(LoginRequiredMixin, View):
         if not request.user.is_anonymous:
             current_user = User.objects.get(id=request.user.id)
             current_profile = UserProfile.objects.get(user=request.user.id)
-            my_kids = Kids.objects.filter(user=current_user.id)
+            my_kids = Kids.objects.filter(user=current_user.id).order_by('date_of_birth')
             context = {
                 'user': current_user,
                 'profile': current_profile,
@@ -79,7 +80,8 @@ class UpdateKid(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         kid_id = self.kwargs['pk']
-        return reverse_lazy('edit_kid', kwargs={'pk': kid_id})
+        #return reverse_lazy('edit_kid', kwargs={'pk': kid_id})
+        return reverse_lazy('my_kids')
 
     def form_valid(self, form):
         current_kid = form.save(commit=False)
@@ -115,3 +117,64 @@ class KidsDeleteView(LoginRequiredMixin, DeleteView):
             os.remove(old_picture)
         return HttpResponseRedirect(reverse_lazy('my_kids'))
 
+
+class MyStories(LoginRequiredMixin, View):
+    def get(self, request):
+        context = {}
+        if not request.user.is_anonymous:
+            current_user = User.objects.get(id=request.user.id)
+            current_profile = UserProfile.objects.get(user=request.user.id)
+            kids = Kids.objects.filter(user=request.user.id)
+            my_stories = Memory.objects.filter(user=current_user.id).order_by('-date_of_memory')
+            context = {
+                'user': current_user,
+                'profile': current_profile,
+                'my_stories': my_stories,
+                'kids': kids
+            }
+        return render(request, 'my_stories.html', context)
+
+
+class SharedStories(LoginRequiredMixin, View):
+    def get(self, request):
+        context = {}
+        if not request.user.is_anonymous:
+            current_user = User.objects.get(id=request.user.id)
+            current_profile = UserProfile.objects.get(user=request.user.id)
+            kids = Kids.objects.filter(user=request.user.id)
+            my_stories = Memory.objects.filter(user=current_user.id)
+            my_stories = my_stories.exclude(status='PRIVATE').order_by('-date_of_memory')
+
+            context = {
+                'user': current_user,
+                'profile': current_profile,
+                'my_stories': my_stories,
+                'kids': kids
+            }
+        return render(request, 'shared_stories.html', context)
+
+
+class SneakPeekStories(View):
+    def get(self, request):
+
+        if not request.user.is_anonymous:
+            current_user = User.objects.get(id=request.user.id)
+            current_profile = UserProfile.objects.get(user=request.user.id)
+            kids = Kids.objects.filter(user=request.user.id)
+            my_stories = Memory.objects.filter(status='PUBLIC').order_by('-date_of_memory')
+
+            context = {
+                'user': current_user,
+                'profile': current_profile,
+                'my_stories': my_stories,
+                'kids': kids
+            }
+        else:
+            kids = Kids.objects.filter(user=request.user.id)
+            my_stories = Memory.objects.filter(status='PUBLIC').order_by('-date_of_memory')
+            context = {
+                'my_stories': my_stories,
+                'kids': kids
+            }
+
+        return render(request, 'sneak_peek.html', context)
