@@ -27,14 +27,14 @@
             <div class="row">
                 {% for memory in my_stories %}
                     <div class="col-md-6 col-lg-4">
-                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover"
+                        <div class="card border-0"><a><img class="card-img-top scale-on-hover"
                                                                     src="/media/{{ memory.memory_picture }}"
                                                                     alt="Card Image"
                                                                     style="object-fit: cover; height: 250px;"> </a>
                             <div class="card-body">
-                                <h6><a href="#">{{ memory.title }}</a></h6>
-                                <h6><a href="#">{{ memory.kid.first_name }} {{ memory.kid.last_name }}</a></h6>
-                                <h6><a href="#">{{ memory.user.first_name }} {{ memory.user.last_name }} is the parent</a></h6>
+                                <h6><a>{{ memory.title }}</a></h6>
+                                <h6><a>{{ memory.kid.first_name }} {{ memory.kid.last_name }}</a></h6>
+                                <h6><a>Parent: {{ memory.user.first_name }} {{ memory.user.last_name }}</a></h6>
                                 <p class="text-muted card-text">{{ memory.date_of_memory }}</p>
                                 <p class="text-muted card-text">{{ memory.description }}</p>
 

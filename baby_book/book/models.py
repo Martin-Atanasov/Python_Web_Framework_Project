@@ -24,8 +24,8 @@ class Memory(models.Model):
         ('PUBLIC', 'Public'),
     )
 
-    kid = models.ForeignKey(Kids, on_delete=models.CASCADE)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    kid = models.ForeignKey(Kids, on_delete=models.CASCADE, blank=False)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, blank=False)
     title = models.CharField(max_length=30, blank=False)
     date_of_memory = models.DateField(blank=False)
     status = models.CharField(max_length=30, choices=CHOICES, blank=False)

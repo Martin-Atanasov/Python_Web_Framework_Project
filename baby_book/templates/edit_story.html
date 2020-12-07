@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>BabyBook</title>
+    <link rel="stylesheet" href="/static/home/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/home/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/static/home/fonts/pikaday.min.css">
+
+</head>
+
+<body>
+{% include "nav.html" %}
+
+<main class="page lanidng-page">
+    <br>
+    <section class="portfolio-block photography">
+
+
+        <section class="portfolio-block block-intro">
+            <span class="img-container">
+      <img src="/media/{{ story.memory_picture }}" alt="" style="object-fit: cover; height: 250px;">
+                <br>
+    </span>
+            <br>
+            <div class="row d-flex justify-content-center">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    <ul style="list-style: none;">
+                        {% csrf_token %}
+                        {{ form }}
+
+                        <br>
+                        <button class="btn btn-primary">Save</button>
+                        <br>
+                        <br>
+                        <div class="col text-center">
+                            <a class="btn btn-outline-primary" role="button" href="#">Delete Story
+                            </a>
+                        </div>
+                    </ul>
+                </form>
+            </div>
+        </section>
+    </section>
+    <br>
+</main>
+{% include "footer.html" %}
+<script src="/static/home/js/jquery.min.js"></script>
+<script src="/static/home/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/home/js/pikaday.min.js"></script>
+<script src="/static/home/js/theme.js"></script>
+</body>
+
+</html>

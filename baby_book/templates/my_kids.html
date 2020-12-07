@@ -22,6 +22,7 @@
                 class="btn btn-outline-primary" role="button" href="{% url 'create_kid' %}">Add Kid</a></div>
         </div>
     </section>
+{% if my_kids %}
     <section class="portfolio-block projects-cards">
         <div class="container">
             <div class="heading">
@@ -30,11 +31,11 @@
             <div class="row">
                 {% for kids in my_kids %}
                     <div class="col-md-6 col-lg-4">
-                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover"
+                        <div class="card border-0"><a><img class="card-img-top scale-on-hover"
                                                                     src="/media/{{ kids.baby_profile_picture }}"
                                                                     alt="Card Image" style="object-fit: cover; height: 250px;"> </a>
                             <div class="card-body">
-                                <h6><a href="#">{{ kids.first_name }} {{ kids.last_name }}</a></h6>
+                                <h6><a>{{ kids.first_name }} {{ kids.last_name }}</a></h6>
                                 <p class="text-muted card-text">{{ kids.date_of_birth }}</p>
                                 <p class="text-muted card-text">{{ kids.additional_info }}</p>
                                 <div class="right">
@@ -50,9 +51,9 @@
         </div>
 
     </section>
-
+{% endif %}
 </main>
-
+<br>
 {% include "footer.html" %}
 <script src="/static/home/js/jquery.min.js"></script>
 <script src="/static/home/bootstrap/js/bootstrap.min.js"></script>
