@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -32,7 +32,7 @@
                 {% for kids in my_kids %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-0"><a><img class="card-img-top scale-on-hover"
-                                                                    src="/media/{{ kids.baby_profile_picture }}"
+                                                                    src="{{ kids.baby_profile_picture.url }}"
                                                                     alt="Card Image" style="object-fit: cover; height: 250px;"> </a>
                             <div class="card-body">
                                 <h6><a>{{ kids.first_name }} {{ kids.last_name }}</a></h6>

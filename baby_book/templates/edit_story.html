@@ -21,7 +21,7 @@
 
         <section class="portfolio-block block-intro">
             <span class="img-container">
-      <img src="/media/{{ story.memory_picture }}" alt="" style="object-fit: cover; height: 250px;">
+      <img src="{{ story.memory_picture.url }}" alt="" style="object-fit: cover; height: 250px;">
                 <br>
     </span>
             <br>
@@ -36,7 +36,7 @@
                         <br>
                         <br>
                         <div class="col text-center">
-                            <a class="btn btn-outline-primary" role="button" href="#">Delete Story
+                            <a class="btn btn-outline-primary" role="button" href="{% url 'delete_story' pk=story.id %}">Delete Story
                             </a>
                         </div>
                     </ul>

@@ -28,7 +28,7 @@
                 {% for memory in my_stories %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-0"><a><img class="card-img-top scale-on-hover"
-                                                                    src="/media/{{ memory.memory_picture }}"
+                                                                    src="{{ memory.memory_picture.url }}"
                                                                     alt="Card Image"
                                                                     style="object-fit: cover; height: 250px;"> </a>
                             <div class="card-body">
