@@ -1,5 +1,5 @@
-# Python_Web_Framework_Project
- Final Project of the course
+# BabyBook - Final Project of the course "Python Web Framework" at SoftUni.bg
+ 
 
 BabyBook is a place where you can save and share your precious baby memories.
 BabyBook makes it easy to keep track of all the fun stories and memories you share in your baby's first year, plus you can share it with the fam!
