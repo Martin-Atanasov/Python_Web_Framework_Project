@@ -52,6 +52,10 @@ def sign_out(request):
 def user_and_profile_update(request, pk):
     profile = UserProfile.objects.get(pk=pk)
     current_user = User.objects.get(pk=profile.user_id)
+
+    if current_user.id != request.user.id:
+        return redirect('home')
+
     if request.method == 'GET':
         user_form = UserForm(instance=current_user)
         profile_form = ProfileForm(instance=profile)

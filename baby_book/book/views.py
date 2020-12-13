@@ -95,6 +95,12 @@ class UpdateKid(LoginRequiredMixin, UpdateView):
             os.remove(old_picture)
         return valid
 
+    def dispatch(self, request, *args, **kwargs):
+        kid = self.get_object()
+        if kid.user_id != request.user.id:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
 
 class KidsDeleteView(LoginRequiredMixin, DeleteView):
     model = Kids
@@ -118,6 +124,12 @@ class KidsDeleteView(LoginRequiredMixin, DeleteView):
             os.remove(old_picture)
         delete_related_pictures(related_pictures)
         return HttpResponseRedirect(reverse_lazy('my_kids'))
+
+    def dispatch(self, request, *args, **kwargs):
+        kid = self.get_object()
+        if kid.user_id != request.user.id:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
 
 
 class MyStories(LoginRequiredMixin, View):
@@ -238,6 +250,12 @@ class UpdateStory(LoginRequiredMixin, UpdateView):
             os.remove(old_picture)
         return valid
 
+    def dispatch(self, request, *args, **kwargs):
+        story = self.get_object()
+        if story.user_id != request.user.id:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
 
 class StoryDeleteView(LoginRequiredMixin, DeleteView):
     model = Memory
@@ -258,6 +276,12 @@ class StoryDeleteView(LoginRequiredMixin, DeleteView):
         if os.path.exists(old_picture):
             os.remove(old_picture)
         return HttpResponseRedirect(reverse_lazy('my_stories'))
+
+    def dispatch(self, request, *args, **kwargs):
+        story = self.get_object()
+        if story.user_id != request.user.id:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
 
 
 def related_pictures_to_delete(related_stories):
